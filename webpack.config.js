@@ -13,13 +13,20 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_moudules/,
         loader: "babel-loader"
+      },
+      {
+        test: /index\.html$/,
+        loader: "file-loader?name=[name].[ext]"
       }
     ]
   },
   entry: {
-    "main/index": "./src/main/index.js"
+    "main/index": "./src/main/index.js",
+    "renderer/app": "./src/renderer/app.jsx",
+    "index": "./src/index.html"
   },
   output: {
-    filename: "dist/js/[name].js"
+    path: __dirname + "/dist",
+    filename: "[name].js"
   }
 }
