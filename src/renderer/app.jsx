@@ -1,8 +1,16 @@
-import React from "react";
-import { render } from "react-dom";
+import React from "react"
+import { render } from "react-dom"
 
-const App = (props) => (
-  <h1>twitter client予定地</h1>
-)
+class App extend React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuthed: false
+    }
+  }
 
-render(<App />, document.querySelector("#app"));
+  authenticate() {
+  }
+}
+
+render(<App />, document.querySelector("#app"))
