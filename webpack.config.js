@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
   target: "electron",
   node: {
@@ -7,6 +9,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"]
   },
+  plugins: [
+    new ExtractTextPlugin("style/index.css")
+  ],
   module: {
     rules: [
       {
@@ -17,6 +22,20 @@ module.exports = {
       {
         test: /\.html$/,
         loader: "file-loader?name=[name].[ext]"
+      },
+      {
+        test: /\.s?css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            "css-loader",
+            "sass-loader"
+          ]
+        })
+      },
+      {
+        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        loader: "file-loader"
       }
     ]
   },
@@ -24,6 +43,7 @@ module.exports = {
     "main/index": "./src/main/index.js",
     "renderer/app": "./src/renderer/app.jsx",
     "renderer/auth": "./src/renderer/auth.jsx",
+    "style/index": "./src/style/index.scss",
     "index": "./src/index.html",
     "auth": "./src/auth.html"
   },
