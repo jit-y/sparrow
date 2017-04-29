@@ -9,6 +9,7 @@ export default class Pincode extends React.Component {
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleOnCancel = this.handleOnCancel.bind(this);
   }
 
   handleOnChange(e) {
@@ -20,7 +21,11 @@ export default class Pincode extends React.Component {
     if (!pincode) {
       return;
     }
-    ipcRenderer.send("SEND_PINCODE", { pincode });
+    ipcRenderer.send("SEND_PIN", { pincode });
+  }
+
+  handleOnCancel() {
+    ipcRenderer.send("CANCEL_PIN")
   }
 
   render() {
@@ -31,6 +36,7 @@ export default class Pincode extends React.Component {
           placeholder="Pincode"
           onChange={this.handleOnChange}
           value={this.state.pincode} />
+        <button type="button" onClick={this.handleOnCancel}>Cancel</button>
         <button type="submit">OK</button>
       </form>
     )

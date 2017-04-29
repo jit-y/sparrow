@@ -1,15 +1,32 @@
-import React from "react"
-import { render } from "react-dom"
+import React from "react";
+import { render } from "react-dom";
+import { ipcRenderer } from "electron";
 
-class App extend React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthed: false
+      isLogin: false
     }
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  authenticate() {
+  componentDidMount() {
+    ipcRenderer.on("AUTHENTICATED", (e, args) => {
+      this.setState({ isLogin: true });
+    })
+  }
+
+  handleOnClick() {
+    ipcRenderer.send("START_OAUTH")
+  }
+
+  render() {
+    return this.state.isLogin ? (
+      <div>aaaa</div>
+    ) : (
+      <button type="button" onClick={this.handleOnClick}>Login</button>
+    )
   }
 }
 

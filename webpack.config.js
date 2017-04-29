@@ -15,7 +15,7 @@ module.exports = {
         loader: "babel-loader"
       },
       {
-        test: /index\.html$/,
+        test: /\.html$/,
         loader: "file-loader?name=[name].[ext]"
       }
     ]
@@ -23,7 +23,9 @@ module.exports = {
   entry: {
     "main/index": "./src/main/index.js",
     "renderer/app": "./src/renderer/app.jsx",
-    "index": "./src/index.html"
+    "renderer/auth": "./src/renderer/auth.jsx",
+    "index": "./src/index.html",
+    "auth": "./src/auth.html"
   },
   output: {
     path: __dirname + "/dist",
