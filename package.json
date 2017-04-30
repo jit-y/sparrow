@@ -27,10 +27,11 @@
     "webpack": "^2.4.1"
   },
   "dependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "furtive": "^2.3.0",
+    "normalize-scss": "^6.0.0",
     "oauth": "^0.9.15",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "semantic-ui-sass": "^2.2.9"
+    "uikit": "^3.0.0-beta.22"
   }
 }
