@@ -1,2 +1,30 @@
 @charset "UTF-8";
 @import "~furtive/scss/all";
+
+.container {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+.main {
+  height: 100%;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 15px 30px;
+  width: 100%;
+}
+
+.sidebar {
+  float: left;
+  width: 200px;
+  height: 100%;
+}
+
+.content {
+  margin-left: 200px;
+  height: inherit;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { ipcRenderer } from "electron";
+import Layout from "./components/Layout";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,11 +20,7 @@ class App extends React.Component {
   }
 
   render() {
-    return this.state.isLogin ? (
-      <div>aaaa</div>
-    ) : (
-      <button type="button" onClick={this.handleOnClick}>Login</button>
-    )
+    return <Layout {...this.state} />
   }
 }
 

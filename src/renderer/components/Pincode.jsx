@@ -30,14 +30,14 @@ export default class Pincode extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleOnSubmit}>
+      <form onSubmit={this.handleOnSubmit} >
         <input
           type="text"
           placeholder="Pincode"
           onChange={this.handleOnChange}
           value={this.state.pincode} />
-        <button type="button" onClick={this.handleOnCancel}>Cancel</button>
-        <button type="submit">OK</button>
+        <button type="button" className="btn btn--s" onClick={this.handleOnCancel}>Cancel</button>
+        <button type="submit" className="btn--blue btn--s">OK</button>
       </form>
     )
   }
