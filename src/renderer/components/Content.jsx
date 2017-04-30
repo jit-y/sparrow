@@ -1,4 +1,5 @@
 import React from "react";
+import TweetForm from "./TweetForm";
 
 export default class Content extends React.Component {
   constructor(props) {
@@ -9,10 +10,7 @@ export default class Content extends React.Component {
     return (
       <div className="content">
         <div className="wrapper">
-          <form>
-            <input type="textarea" />
-            <button type="submit" className="btn btn--s">Tweet</button>
-          </form>
+          <TweetForm />
         </div>
       </div>
     );
