@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   render() {
-    return <Layout {...this.state} />
+    return <Layout {...this.state} handleOnClick={this.handleOnClick} />
   }
 }
 
