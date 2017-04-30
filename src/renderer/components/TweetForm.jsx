@@ -18,14 +18,14 @@ export default class TweetForm extends React.Component {
     if (!this.state.message.length) {
       return;
     }
-    this.setState({message: ""})
+    this.setState({message: ""});
     e.preventDefault();
   }
 
   render() {
     return (
       <form>
-        <input type="textarea" onChange={this.handleOnChange} value={this.state.message} />
+        <textarea onChange={this.handleOnChange} value={this.state.message} />
         <div>{this.state.message}</div>
         <button type="button" className="btn btn--s" onClick={this.handleOnPost}>Tweet</button>
       </form>
