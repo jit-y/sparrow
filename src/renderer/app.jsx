@@ -9,9 +9,6 @@ class App extends React.Component {
       isLogin: false
     }
     this.handleOnClick = this.handleOnClick.bind(this);
-  }
-
-  componentDidMount() {
     ipcRenderer.on("AUTHENTICATED", (e, args) => {
       this.setState({ isLogin: true });
     })

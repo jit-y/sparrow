@@ -1,9 +1,38 @@
 import { app, shell, ipcMain, BrowserWindow } from "electron";
 import createTwitterOAuth from "./createTwitterOAuth";
+import createTwitterClient from "./createTwitterClient";
+import path from "path";
+import fs from "fs";
 
 class LoginManager {
   constructor() {
     this.oauth = createTwitterOAuth();
+    this.credentialPath = path.join(app.getPath("userData"), ".user_credentials");
+    this.credentials = this.loadCredentials();
+  }
+
+  authenticate() {
+    const credentials = this.loadCredentials()
+    if (credentials) {
+      return this.createClient().verifyCredentials()
+        .catch(() => {
+          this.getAccessToken()
+            .then(credentials => {
+              this.saveCredentials(credentials);
+              return this.createClient().verifyCredentials()
+            })
+        })
+    } else {
+      return this.getAccessToken()
+        .then(credentials => {
+          this.saveCredentials(credentials);
+          return this.createClient().verifyCredentials()
+      })
+    }
+  }
+
+  createClient() {
+    return createTwitterClient(this.oauth, this.credentials.accessToken, this.credentials.accessSecret);
   }
 
   getAccessToken() {
@@ -37,6 +66,20 @@ class LoginManager {
         pincodeWindow.loadURL(`file://${__dirname}/../auth.html`)
       })
     })
+  }
+
+  saveCredentials(credentials) {
+    this.credentials = credentials;
+    fs.writeFileSync(this.credentialPath, JSON.stringify(this.credentials), "utf-8");
+  }
+
+  loadCredentials() {
+    try {
+      const credentials = JSON.parse(fs.readFileSync(this.credentialPath, "utf-8"));
+      return credentials
+    } catch(e) {
+      return null;
+    }
   }
 }
 
