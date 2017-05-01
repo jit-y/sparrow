@@ -13,15 +13,47 @@ class TwitterClient {
         this.accessSecret,
         (error, data) => {
           if (error) {
-            console.log(data);
             return reject(error);
           } else {
-            console.log(data);
             return resolve(JSON.parse(data));
           }
         }
       );
     });
+  }
+
+  userTimeline() {
+    return new Promise((resolve, reject) => {
+      this.oauth.get(
+        "https://api.twitter.com/1.1/statuses/user_timeline.json",
+        this.accessToken,
+        this.accessSecret,
+        (error, data) => {
+          if (error) {
+            return reject(error);
+          } else {
+            return resolve(JSON.parse(data))
+          }
+        }
+      )
+    })
+  }
+
+  homeTimeline() {
+    return new Promise((resolve, reject) => {
+      this.oauth.get(
+        "https://api.twitter.com/1.1/statuses/home_timeline.json",
+        this.accessToken,
+        this.accessSecret,
+        (error, data) => {
+          if (error) {
+            return reject(error);
+          } else {
+            return resolve(JSON.parse(data));
+          }
+        }
+      )
+    })
   }
 }
 
