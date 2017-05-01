@@ -7,7 +7,7 @@ module.exports = {
     __filename: false
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".scss", ".css"]
   },
   plugins: [
     new ExtractTextPlugin("style/index.css")
@@ -24,7 +24,7 @@ module.exports = {
         loader: "file-loader?name=[name].[ext]"
       },
       {
-        test: /\.s?css$/,
+        test: /index\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
@@ -32,6 +32,15 @@ module.exports = {
             "sass-loader"
           ]
         })
+      },
+      {
+        test: /\.s?css$/,
+        exclude: /index\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,

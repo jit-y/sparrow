@@ -16,6 +16,7 @@ html, body {
   margin: 0 auto;
   padding: 15px 30px;
   width: 100%;
+  height: 100%;
 }
 
 .sidebar {
@@ -27,4 +28,37 @@ html, body {
 .content {
   margin-left: 200px;
   height: inherit;
+  overflow: scroll;
+}
+
+.timeline {
+  height: inherit;
+  width: inherit;
+}
+
+.tweet {
+  &__text {
+    font-size: 0.9rem;
+  }
+
+}
+
+.user {
+  display: inline-block;
+  &__icon {
+    width: 50px;
+    height: 50px;
+  }
+  &__name {
+    font-size: 0.8rem;
+    position: relative;
+    bottom: 30px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  &__screenname {
+    position: relative;
+    bottom: 30px;
+    margin-left: 10px;
+  }
 }

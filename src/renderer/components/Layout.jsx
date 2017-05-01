@@ -6,7 +6,7 @@ const Layout = (props) => {
   return (
     <div className="container">
       <Sidebar />
-      <Content />
+      <Content contents={props.contents} />
     </div>
   )
 }

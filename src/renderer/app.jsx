@@ -7,16 +7,32 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false
+      isLogin: false,
+      contents: []
     }
     this.handleOnClick = this.handleOnClick.bind(this);
+  }
+
+  componentWillMount() {
     ipcRenderer.on("AUTHENTICATED", (e, args) => {
       this.setState({ isLogin: true });
-    })
+    });
+    ipcRenderer.once("HOME_TIMELINE", (e, data) => {
+      this.setState({ contents: data });
+    });
+    this.fetchHomeTimeline();
+  }
+
+  componentWillUnmount() {
+    ipcRenderer.removeAllListeners("AUTHENTICATED");
   }
 
   handleOnClick() {
     ipcRenderer.send("START_OAUTH")
+  }
+
+  fetchHomeTimeline() {
+    ipcRenderer.send("FETCH_HOME_TIMELINE")
   }
 
   render() {
