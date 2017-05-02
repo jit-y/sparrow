@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   target: "electron",
@@ -37,9 +38,12 @@ module.exports = {
         test: /\.s?css$/,
         exclude: /index\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          {loader: "style-loader"},
+          {
+            loader: "css-loader",
+            options: { modules: true }
+          },
+          {loader: "sass-loader"}
         ]
       },
       {
@@ -48,13 +52,14 @@ module.exports = {
       }
     ]
   },
+  context: path.resolve(__dirname, "src"),
   entry: {
-    "main/index": "./src/main/index.js",
-    "renderer/app": "./src/renderer/app.jsx",
-    "renderer/auth": "./src/renderer/auth.jsx",
-    "style/index": "./src/style/index.scss",
-    "index": "./src/index.html",
-    "auth": "./src/auth.html"
+    "main/index": "./main/index.js",
+    "renderer/app": "./renderer/app.jsx",
+    "renderer/auth": "./renderer/auth.jsx",
+    "style/index": "./style/index.scss",
+    "index": "./index.html",
+    "auth": "./auth.html"
   },
   output: {
     path: __dirname + "/dist",

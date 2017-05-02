@@ -7,8 +7,7 @@ const TweetListItem = (props) => {
     <div className="tweet">
       <img src={props.content.user.profile_image_url} className="user__icon" />
       <span className="user__name">{props.content.user.name}</span>
-      <p className="tweet__text">{props.content.text}</p>
-      <p className={styles.text}></p>
+      <p className={styles.tweet__text}>{props.content.text}</p>
     </div>
   )
 }

@@ -1,3 +1,5 @@
-.text {
-  font-size: 1px;
+.tweet {
+  &__text {
+    font-size: 0.9rem;
+  }
 }
