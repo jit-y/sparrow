@@ -20,7 +20,7 @@
     "babel-register": "^6.24.1",
     "css-loader": "^0.28.0",
     "electron": "^1.6.5",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-loader": "^0.1.0",
     "file-loader": "^0.11.1",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
