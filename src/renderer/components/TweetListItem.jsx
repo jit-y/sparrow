@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./TweetListItem.scss"
+import styles from "./TweetListItemStyle"
 
 const TweetListItem = (props) => {
   console.log(styles);
