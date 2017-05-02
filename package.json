@@ -29,10 +29,8 @@
   },
   "dependencies": {
     "furtive": "^2.3.0",
-    "normalize-scss": "^6.0.0",
     "oauth": "^0.9.15",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "uikit": "^3.0.0-beta.22"
+    "react-dom": "^15.5.4"
   }
 }
